@@ -1,59 +1,82 @@
-# CarRentingProject
+# 🚗 Car Rental Booking App - Project Brief
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.14.
+Welcome to the **Car Rental Booking App**. A product which will help to manage your Car rental Business. An Erp kind of Application to understand How Projects are completed from scratch.
 
-## Development server
+## 📝 Project Overview
+This application serves as an Enterprise Resource Planning (ERP) tool for car rental businesses. It provides a centralized interface for operators to track vehicle availability and manage reservation lifecycles.
 
-To start a local development server, run:
+**Roles:** Super Admin
 
-```bash
-ng serve
-```
+## 🛠 Tech Stack
+- **Framework**: Angular 20 (Standalone Components)
+- **Styling**: Vanilla CSS + Bootstrap 5.3
+- **Icons**: Font Awesome 4.7
+- **Typography**: Inter (Google Fonts)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 📦 Modules
+- **Login**: Secure access for the Super Admin.
+- **Vehicle Creation**: Manage the fleet (Add, Edit, Delete vehicles).
+- **Booking Creation**: Register new rental transactions.
+- **Customer Master List**: View and manage customer profiles.
+- **Booking List**: Track all historical and active bookings.
+- **Dashboard**: High-level statistics and business overview.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## 🔗 APIs & Resources
+- **API Endpoint**: [https://freeapi.miniprojectideas.com/index.html](https://freeapi.miniprojectideas.com/index.html)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Car Rental APIs
 
-```bash
-ng generate --help
-```
+1. Create New Car
+2. Get All Cars
+3. Get Car By Id
+4. Update Car
+5. Delete Car
+6. Get All Customers
+7. Get Customer By Id
+8. Update Customer
+9. Delete Customer
+10. Create New Booking
+11. Get All Bookings
+12. Get Booking By Id
+13. Update Booking
+14. Delete Booking
+15. Get All Dashboard Data
 
-## Building
+---
 
-To build the project run:
+## 🔐 Key Implementation Details
 
-```bash
-ng build
-```
+### 1. Hard-coded Login (Security Mockup)
+In the initial development phase, we implemented a **Hard-coded Login** for the following reasons:
+- **Use Case**: The app is built for a specific business owner/operator (Super Admin), not public registration.
+- **Implementation**: The logic resides in `LoginComponent`. It verifies credentials against static strings instead of an API.
+- **Logic Snippet**:
+  ```typescript
+  if (this.loginObj.userName == 'admin' && this.loginObj.password == "112233") {
+    // Navigate to Dashboard
+  }
+  ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### 2. Standalone Architecture
+Following Angular 20 best practices, every page is a **Standalone Component**. This removes the need for `app.module.ts` and makes the project modular and lightweight.
 
-## Running unit tests
+### 3. Design System
+- **Rich Aesthetics**: Uses custom gradients, glassmorphism on the login card, and shadow utilities for a premium feel.
+- **Responsiveness**: Fully responsive layout using the Bootstrap Grid system.
+- **Micro-Animations**: Key elements use CSS animations (`animate-up`, `fadeIn`) to improve user experience.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 📂 Project Structure
+- `src/app/pages/`: Contains all feature components (Login, Dashboard, Vehicles, etc.)
+- `src/app/app.routes.ts`: Central routing configuration with child routes for the layout.
+- `src/styles.css`: Global design tokens and font imports.
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🚀 Getting Started
+1. Run `npm install` to install dependencies.
+2. Run `npm start` to launch the dev server.
+3. Login using **admin / 112233**.

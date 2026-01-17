@@ -1,0 +1,54 @@
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-header bg-white border-0 py-4 px-4 d-flex justify-content-between align-items-center">
+        <h5 class="fw-bold text-dark mb-0">Customer Management</h5>
+        <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+                <i class="fa fa-download me-1"></i> Export
+            </button>
+            <button class="btn btn-primary btn-sm rounded-pill px-3">
+                <i class="fa fa-user-plus me-1"></i> Add Customer
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-0 pb-4">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light">
+                    <tr class="small text-uppercase text-muted">
+                        <th class="ps-4">Name</th>
+                        <th>Contact Details</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(item of customerList; track $index){
+
+                    <tr>
+                        <td class="ps-4">
+                            <div class="d-flex align-items-center">
+                                <div class="p-2 rounded-circle bg-info-subtle text-info me-3"
+                                    style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                    {{item.customerName.charAt(0).toUpperCase() +
+                                    item.customerName.charAt(1).toUpperCase()}}</div>
+                                <div>
+                                    <div class="fw-bold">{{item.customerName}}</div>
+                                    <div class="smaller text-muted">{{item.customerId}}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="small fw-semibold">{{item.mobileNo}}</div>
+                            <div class="smaller text-muted">{{item.email}}</div>
+                        </td>
+                        <td>{{item.customerCity}}</td>
+                        <td><span class="badge bg-success-subtle text-success rounded-pill px-3">Active</span></td>
+                    </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

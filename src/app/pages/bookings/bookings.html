@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-white border-0 py-4 px-4 d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold text-dark mb-0">Bookings Overview</h5>
+                <div class="d-flex gap-2">
+                    <div class="input-group input-group-sm rounded-pill border overflow-hidden" style="width: 200px;">
+                        <span class="input-group-text bg-white border-0"><i class="fa fa-search text-muted"></i></span>
+                        <input type="text" class="form-control border-0" placeholder="Search...">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0 pb-4">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr class="small text-uppercase text-muted">
+                                <th class="ps-4">Customer</th>
+                                <th>Vehicle</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(item of bookingList; track $index){
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="fw-bold">{{item.customerName}}</div>
+                                    <div class="small text-muted">{{item.email}}</div>
+                                </td>
+                                <td>
+                                    <div class="small fw-semibold">{{item.carId}}</div>
+                                </td>
+                                <td>{{item.BookingDate}}</td>
+                                <td class="fw-bold">₹{{item.totalBillAmount}}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-light rounded-circle">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button (click)="deleteBooking(item.bookingId)"
+                                        class="btn btn-sm btn-light rounded-circle ms-1">
+                                        <i class="fa fa-trash text-danger"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-0 py-4 px-4">
+                <h5 class="fw-bold text-dark mb-0">New Booking</h5>
+            </div>
+            <div class="card-body px-4 pb-4">
+                <form [formGroup]="bookingForm">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label small fw-bold">Customer Name</label>
+                            <input type="text" formControlName="customerName" class="form-control rounded-3"
+                                placeholder="Enter Name">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold">Mobile Number</label>
+                            <input type="text" formControlName="mobileNo" class="form-control rounded-3"
+                                placeholder="Enter Mobile">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold">Email</label>
+                            <input type="email" formControlName="email" class="form-control rounded-3"
+                                placeholder="Enter Email">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold">Select Vehicle</label>
+                            <select formControlName="carId" class="form-select rounded-3">
+                                @for(item of carList; track $index){
+                                <option [value]="item.carId">{{item.brand}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">City</label>
+                            <input type="text" formControlName="customerCity" class="form-control rounded-3"
+                                placeholder="Enter City">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Booking Date</label>
+                            <input type="date" formControlName="bookingDate" class="form-control rounded-3">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Discount</label>
+                            <input type="number" formControlName="discount" class="form-control rounded-3">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Total Amount</label>
+                            <input type="number" formControlName="totalBillAmount" class="form-control rounded-3">
+                        </div>
+
+                        <div class="col-12 mt-4">
+                            <button type="button" class="btn btn-primary w-100 rounded-pill py-2 fw-bold"
+                                (click)="onSubmit()">
+                                Create Reservation
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
